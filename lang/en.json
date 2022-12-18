@@ -1,0 +1,7 @@
+{
+    "SERVER_ERROR": "Server error",
+    "EMAIL_IS_REQUIRED" : "Email must be filled",
+    "PASSWORD_IS_REQUIRED" : "Password must be filled",
+    "USER_NOT_FOUND" : "User not found",
+    "INVALID_PASSWORD" : "Invalid password"
+}

@@ -1,0 +1,7 @@
+{
+    "SERVER_ERROR": "Ошибка сервера",
+    "EMAIL_IS_REQUIRED" : "Электронная почта должна быть заполнен",
+    "PASSWORD_IS_REQUIRED" : "Пароль должен быть заполнен",
+    "USER_NOT_FOUND" : "Пользователь не найден",
+    "INVALID_PASSWORD" : "Неверный пароль"
+}
