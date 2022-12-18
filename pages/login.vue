@@ -51,6 +51,7 @@
 
 <script>
 export default {
+  middleware: 'unauthenticated',
   layout: 'auth',
   head() {
     return {
@@ -84,7 +85,7 @@ export default {
         this.isLoading = true
         const auth = await this.$store.dispatch('auth/login', this.form)
 
-        this.$router.push('/')
+        this.$router.push({ path: this.localePath('/') })
       } catch (error) {
         this.isLoading = false
         this.isError = true

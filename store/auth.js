@@ -4,6 +4,16 @@ export const state = () => ({
   fullname: null,
 })
 
+export const getters = {
+  authenticated(state) {
+    // if (state.accessToken) {
+    //   return true
+    // }
+    // return false
+    return state.accessToken ? true : false
+  },
+}
+
 export const mutations = {
   setAccessToken(state, accessToken) {
     state.accessToken = accessToken
@@ -14,12 +24,17 @@ export const mutations = {
   setFullname(state, fullname) {
     state.fullname = fullname
   },
+  logout(state) {
+    state.accessToken = null
+    state.refreshToken = null
+    state.fullname = null
+  },
 }
 
 export const actions = {
   async login({ commit }, payload) {
     const response = await this.$axios.$post(
-      'http://127.0.0.1:3000/login',
+      '/login',
       payload
     )
     if (!response) {

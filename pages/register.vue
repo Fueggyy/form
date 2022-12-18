@@ -64,6 +64,7 @@
 
 <script>
 export default {
+  middleware: ['unauthenticated'],
   layout: 'auth',
   head() {
     return {
@@ -109,16 +110,17 @@ export default {
         if (this.$refs.form.validate()) {
           this.isLoading = true
           const response = await this.$axios.$post(
-            'http://127.0.0.1:3000/register',
+            '/register',
             this.form
           )
-          console.log(response)
-
           if (response.message == 'USER_CREATED_SUCCESSFULLY') {
-            alert('Register success')
+            this.$store.commit('auth/setFullname', response.user.fullname)
+            this.$store.commit('auth/setAccessToken', response.accessToken)
+            this.$store.commit('auth/setRefreshToken', response.refreshToken)
+            this.$router.push({ path: this.localePath('/') })
           }
 
-          this.$router.push('/login')
+          this.isLoading = false
         }
       } catch (error) {
         console.log(error.response)
