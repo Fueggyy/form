@@ -2,7 +2,7 @@
   <v-row>
     <v-col cols="10" offset-sm="1" md="4" offset-md="4">
       <v-card>
-        <v-toolbar dark color="primary">Masuk</v-toolbar>
+        <v-toolbar dark color="primary">Login</v-toolbar>
         <v-card-text>
           <v-alert v-if="isError" color="red lighten-2" dark>
             {{ $t(message) }}
