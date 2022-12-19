@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   web-deploy:
-    name: Deploy
+    name: Deploy VUE
     runs-on: ubuntu-latest
     steps:
       - name: Get the latest code
