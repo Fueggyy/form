@@ -1,4 +1,4 @@
-export default function ({ $axios, store }) {
+export default function ({ $axios, redirect, store }) {
   $axios.onRequest((config) => {
     if (store.state.auth.accessToken) {
       config.headers['Authorization'] = `Bearer ${store.state.auth.accessToken}`
@@ -7,6 +7,7 @@ export default function ({ $axios, store }) {
 
   $axios.onResponseError(async (error) => {
     try {
+      // && error.response.data.message === 'ACCESS_TOKEN_EXPIRED'
       if (error.response.status === 401) {
         let refreshToken = store.state.auth.refreshToken
 
@@ -25,7 +26,7 @@ export default function ({ $axios, store }) {
         return $axios.request(originalRequest)
       }
     } catch (error) {
-      console.log(error.response)
+      return redirect('/logout')
     }
   })
 }

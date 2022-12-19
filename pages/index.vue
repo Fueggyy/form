@@ -16,9 +16,8 @@ export default {
     async fetchForms() {
       try {
         const response = await this.$axios.$get('/forms')
-        console.log(response)
       } catch (error) {
-        console.log(error.response)
+        console.log(error)
       }
     },
   },
