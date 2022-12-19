@@ -11,8 +11,6 @@ jobs:
       - name: Get the latest code
         uses: actions/checkout@v2.3.2
       - uses: actions/setup-node@master
-      - name: Start
-        run: npm run start
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
