@@ -18,7 +18,7 @@ export default {
         const response = await this.$axios.$get('/forms')
         console.log(response)
       } catch (error) {
-        console.log(error)
+        console.log(error.response)
       }
     },
   },
