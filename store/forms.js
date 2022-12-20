@@ -21,7 +21,7 @@ export const actions = {
       return false
     }
 
-    commit('setForm', response)
+    // commit('setForm', response)
 
     return response
   },
