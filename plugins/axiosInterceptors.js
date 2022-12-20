@@ -7,6 +7,12 @@ export default function ({ $axios, redirect, store }) {
 
   $axios.onResponseError(async (error) => {
     try {
+      if (
+        error.response.data.message === 'REFRESH_TOKEN_EXPIRED' ||
+        error.response.data.message === 'INVALID_REFRESH_TOKEN'
+      ) {
+        throw new Error('LOGOUT')
+      }
       // && error.response.data.message === 'ACCESS_TOKEN_EXPIRED'
       if (error.response.status === 401) {
         let refreshToken = store.state.auth.refreshToken
