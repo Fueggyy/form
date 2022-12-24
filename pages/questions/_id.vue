@@ -8,7 +8,7 @@
       <v-row>
         <v-col md="8" offset-md="2" sm="10" offset-sm="1">
           <v-card>
-            <v-card-text> TES </v-card-text>
+            <v-card-text> <QuestionTitle /> </v-card-text>
           </v-card>
         </v-col>
       </v-row>
@@ -25,6 +25,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: 'Form',
+    }
+  },
   async asyncData({ params, redirect }) {
     try {
       if (!params.id) {
@@ -41,10 +46,19 @@ export default {
     async fetchForm() {
       try {
         const response = await this.$store.dispatch('forms/show', this.formId)
-
-        return response
       } catch (error) {
-        console.log(error)
+        if (error.response) {
+          this.$nuxt.error({
+            statusCode: error.response.status,
+            message: error.response.data.message,
+          })
+        } else {
+          this.$store.commit('alerts/show', {
+            type: 'error',
+            show: true,
+            message: this.$t('SERVER_ERROR'),
+          })
+        }
       }
     },
   },

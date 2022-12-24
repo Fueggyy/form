@@ -10,6 +10,6 @@
 
 <script>
 export default {
-  name: 'deafult',
+  name: 'default',
 }
 </script>

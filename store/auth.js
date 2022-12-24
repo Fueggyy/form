@@ -6,10 +6,6 @@ export const state = () => ({
 
 export const getters = {
   authenticated(state) {
-    // if (state.accessToken) {
-    //   return true
-    // }
-    // return false
     return state.accessToken ? true : false
   },
 }
@@ -33,10 +29,7 @@ export const mutations = {
 
 export const actions = {
   async login({ commit }, payload) {
-    const response = await this.$axios.$post(
-      '/login',
-      payload
-    )
+    const response = await this.$axios.$post('/login', payload)
     if (!response) {
       return false
     }
