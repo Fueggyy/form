@@ -35,4 +35,12 @@ export const actions = {
 
     return response
   },
+  async update({}, payload) {
+    const response = await this.$axios.$put(`/forms/${payload.id}`, payload)
+    if (!response) {
+      return false
+    }
+
+    return response
+  },
 }
